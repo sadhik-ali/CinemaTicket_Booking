@@ -1,0 +1,69 @@
+{% extends "web/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="upcoming" id="upcoming">
+  <div class="container">
+
+    <div class="flex-wrapper">
+
+      <div class="title-wrapper">
+        <p class="section-subtitle">Booking Now</p>
+
+        <h2 class="h2 section-title">Explore Latest Movies</h2>
+      </div>
+
+      <ul class="filter-list">
+
+        <li>
+          <button class="filter-btn">Movies</button>
+        </li>
+
+      </ul>
+    </div>
+    <ul class="movies-list  has-scrollbar">
+      {% for m in loop %}
+
+      <li>
+        <div class="movie-card">
+          <a href="{% url "web:details" m.id %}">
+            <figure class="card-banner">
+              <img src="{{m.image.url}}" alt="movies Images">
+            </figure>
+          </a>
+
+          <div class="title-wrapper">
+            <a href="./movie-details.html">
+              <h3 class="card-title">{{m.movie_name}}</h3>
+            </a>
+
+            <time datetime="2022">{{m.movie_year}}</time>
+          </div>
+
+          <div class="card-meta">
+            <div class="badge badge-outline">{{m.movie_quality}}</div>
+
+            <div class="duration">
+              <ion-icon name="time-outline"></ion-icon>
+
+              <time datetime="PT137M">{{m.movie_time}}</time>
+            </div>
+
+            <div class="rating">
+              <ion-icon name="star"></ion-icon>
+
+              <data>{{m.movie_rating}}</data>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      {% endfor %}
+
+    </ul>   
+  </div>
+</section>
+
+{% endblock %}

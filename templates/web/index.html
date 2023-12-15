@@ -1,0 +1,199 @@
+{% extends "web/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <h1 class="h1 hero-title">
+              Our Exclusive <strong>Cinema</strong>,Ticket Booking.
+            </h1>
+
+            <div class="meta-wrapper">
+
+              <div class="badge-wrapper">
+                <div class="badge badge-fill">PG 18</div>
+
+                <div class="badge badge-outline">HD / 2K</div>
+              </div>
+
+              <div class="ganre-wrapper">
+
+                <a href="#">Comedy,</a>
+
+                <a href="#">Drama</a>
+              </div>
+
+              <div class="date-time">
+
+                <div>
+                  <ion-icon name="calendar-outline"></ion-icon>
+
+                  <time datetime="2022">2024</time>
+                </div>
+
+                <div>
+                  <ion-icon name="time-outline"></ion-icon>
+
+                  <time datetime="PT128M">128 min</time>
+                </div>
+
+              </div>
+
+            </div>
+
+            <button class="btn btn-primary">
+              <ion-icon name="play"></ion-icon>
+
+              <span><a href="#upcoming">BOOK NOW</a></span>
+            </button>
+
+          </div>
+
+        </div>
+      </section>
+
+      <section class="upcoming" id="upcoming">
+        <div class="container">
+
+          <div class="flex-wrapper">
+
+            <div class="title-wrapper">
+              <p class="section-subtitle">Booking Now</p>
+
+              <h2 class="h2 section-title">Explore Latest Movies</h2>
+            </div>
+
+            <ul class="filter-list">
+
+              <li>
+                <button class="filter-btn">Movies</button>
+              </li>
+
+            </ul>
+          </div>
+          <ul class="movies-list  has-scrollbar">
+            {% for m in loop %}
+
+            <li>
+              <div class="movie-card">
+                <a href="{% url "web:details" m.id %}">
+                  <figure class="card-banner">
+                    <img src="{{m.image.url}}" alt="movies Images">
+                  </figure>
+                </a>
+
+                <div class="title-wrapper">
+                  <a href="./movie-details.html">
+                    <h3 class="card-title">{{m.movie_name}}</h3>
+                  </a>
+
+                  <time datetime="2022">{{m.movie_year}}</time>
+                </div>
+
+                <div class="card-meta">
+                  <div class="badge badge-outline">{{m.movie_quality}}</div>
+
+                  <div class="duration">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="PT137M">{{m.movie_time}}</time>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+
+                    <data>{{m.movie_rating}}</data>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            {% endfor %}
+
+          </ul>   
+        </div>
+      </section>
+
+
+      <section class="service">
+        <div class="container">
+          {% for c in code %}
+        
+
+          <div class="service-banner">
+            <figure>  
+              <img src="{{c.image.url}}" alt="HD 4k resolution! only $3.99" style="width:400px;">
+            </figure>
+
+            <a href="{% static "web/images/cinematicketbooking_image.jpg" %}" download class="service-btn">
+              <span>Download</span>
+
+              <ion-icon name="download-outline"></ion-icon>
+            </a>
+          </div>
+
+          <div class="service-content">
+
+            <p class="service-subtitle">Our Services</p>
+
+            <h2 class="h2 service-title">{{c.title_one}}</h2>
+
+            <p class="service-text">
+              {{c.title_two}}
+            </p>
+            <ul class="service-list">
+              
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <ion-icon name="tv"></ion-icon>
+                  </div>
+                  <div class="card-content">
+                    <h3 class="h3 card-title">{{c.head_one}}</h3>
+                    <p class="card-text">
+                      {{c.content_one}}
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <ion-icon name="videocam"></ion-icon>
+                  </div>
+                  <div class="card-content">
+                    <h3 class="h3 card-title">{{c.head_two}}</h3>
+                    <p class="card-text">
+                      {{c.content_two}}
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+
+
+    </article>
+  </main>
+
+{% endblock  %}

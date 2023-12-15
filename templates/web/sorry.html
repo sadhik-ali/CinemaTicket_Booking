@@ -1,0 +1,23 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="overflow-y: hidden; overflow-x: hidden;">
+  <h4 style="padding: 10px;"><a href="{% url "web:index" %}" style="text-decoration:none;">< Back to Home</a></h4>
+  <div style="position: relative; right: 120px;"> 
+    
+    <center>
+      
+      <img src="{% static "web/images/sorry.png" %}" alt="" style="width:290px; position: absolute;">
+      <h1 style="color:red;">Sorry !!!</h1>
+    </center>    
+ 
+  </div>
+</body>
+</html>

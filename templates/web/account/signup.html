@@ -1,0 +1,43 @@
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <link rel="stylesheet" href="{% static "web/css/styles.css" %}" type="text/css" media="all" />
+
+    <link rel="stylesheet" href="{% static "web/css/font-awesome.min.css" %}" type="text/css" media="all">
+
+</head>
+
+<body>
+    <div id="block" class="w3lvide-content" data-vide-bg="{% static "web/images/johnwick" %}" data-vide-options="position: 0% 50%">
+            <!-- /form -->
+            <div class="workinghny-form-grid">
+                <div class="main-hotair">
+                    <div class="content-wthree">
+                        <h1>SignUp</h1>
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <input type="text" class="text" name="username" placeholder="User Name" required autofocus>
+                            <input type="email" class="text" name="email" placeholder="Email Address" required autofocus>
+                            <input type="password" class="password" name="password" placeholder="Password" required autofocus>
+                            <input type="password" class="password" name="confirm_password" placeholder="Confirm Password" required autofocus>
+                            <button class="btn" type="submit" style="background:hsl(57, 97%, 45%); color:black"><a href="{% url "web:login" %}" >Join</a></button>
+                        </form>
+                        <p class="continue"><span>To continue to CinemaTicket <a href="{% url 'web:login' %}">Login</a></span></p>
+                    </div>
+                </div>
+       </div>
+    </div>
+    <!-- //form section start -->
+      <!-- js -->
+  <script src="{% static "web/js/jquery.min.js" %}"></script>
+  <!-- //js -->
+  <script src="{% static "web/js/jquery.vide.js" %}"></script>
+</body>
+
+</html>
+{% endblock  %}

@@ -1,0 +1,79 @@
+{% extends "web/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+  <main>
+    <article>
+
+      <section class="movie-detail">
+        <div class="container">
+
+          <figure class="movie-detail-banner">
+            <img src="{{object.image.url}}" alt="Movie Image">
+          </figure>
+
+          <div class="movie-detail-content">
+
+            <p class="detail-subtitle">Now Ticket Booking</p>
+
+            <h1 class="h1 detail-title">{{object.movie_name}}</h1>
+
+            <div class="meta-wrapper">
+
+              <div class="badge-wrapper">
+                <div class="badge badge-fill">PG 13</div>
+
+                <div class="badge badge-outline">{{object.movie_quality}}</div>
+              </div>
+
+              <div class="ganre-wrapper">
+                <a href="#">Comedy,</a>
+
+                <a href="#">Action,</a>
+
+                <a href="#">Adventure,</a>
+
+                <a href="#">Science Fiction</a>
+              </div>
+
+              <div class="date-time">
+
+                <div>
+                  <ion-icon name="calendar-outline"></ion-icon>
+
+                  <time datetime="2021">{{object.movie_year}}</time>
+                </div>
+
+                <div>
+                  <ion-icon name="time-outline"></ion-icon>
+
+                  <time datetime="PT115M">{{object.movie_time}}</time>
+                </div>
+
+              </div>
+
+            </div>
+
+            <p class="storyline">
+              {{object.details}}
+            </p>
+
+            <div class="details-actions">
+
+                <button><a href="{% url "web:seat" %}" style="color:white;">02.30 PM</a></button>
+                <button><a href="{% url "web:seat" %}" style="color:white;">06.15 PM</a></button>
+                <button><a href="{% url "web:seat" %}" style="color:white;">09.00 PM</a></button>          
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+    </article>
+  </main>
+
+{% endblock  %}
